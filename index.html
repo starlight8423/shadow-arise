@@ -1,32 +1,28 @@
-<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0617"><title>SHADOW ARISE V9 — PHOTO SET</title><style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090513;color:#fff;font-family:system-ui,Arial}
-#stage{position:absolute;inset:0;overflow:hidden;background:#070510}#camera,#overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}#overlay{pointer-events:none;object-position:center;opacity:0;transition:opacity .25s}#overlay.on{opacity:1}
-#camera.mirror{transform:scaleX(-1)}
-#controls{position:absolute;bottom:calc(14px + env(safe-area-inset-bottom));left:0;right:0;display:flex;gap:12px;justify-content:center;align-items:center;z-index:5}
-button{border:1px solid #aa70e6;background:#21132f;color:#fff;border-radius:50%;height:52px;min-width:52px;font-size:24px;touch-action:manipulation}
-#arise{min-width:135px;border-radius:30px;font-size:17px;letter-spacing:.12em;font-weight:800;background:linear-gradient(120deg,#25143b,#63338b)}
-#shot{width:62px;height:62px;background:#241932}#shot svg{width:29px;height:29px;fill:#fff}
-#status{position:absolute;top:calc(15px + env(safe-area-inset-top));left:8px;right:8px;text-align:center;z-index:6;font-size:12px;text-shadow:0 1px 5px #000;background:#0d0718aa;border-radius:8px;padding:6px}
-#save{display:none;position:absolute;top:calc(50px + env(safe-area-inset-top));right:10px;z-index:8;background:#25143b;color:white;text-decoration:none;border:1px solid #bb8cf9;padding:8px 12px;border-radius:8px;font-size:12px}
-#label{position:absolute;bottom:calc(86px + env(safe-area-inset-bottom));width:100%;text-align:center;font-size:11px;color:#ddd;text-shadow:0 2px 5px #000;z-index:4}
-</style></head><body>
-<div id="stage"><video id="camera" autoplay playsinline muted></video><img id="overlay" src="overlay.png" alt=""></div>
-<div id="status">SHADOW ARISE V9 · Consenti la fotocamera</div>
-<a id="save" download="solo-leveling-shadow-arise.jpg">SALVA FOTO ↓</a>
-<div id="label">Inquadra a figura intera · premi ARISE · scatta</div>
-<div id="controls"><button id="flip" aria-label="Cambia fotocamera">⟳</button><button id="arise">ARISE</button><button id="shot" aria-label="Scatta foto"><svg viewBox="0 0 24 24"><path d="M8.2 4.2h7.6l1.35 2H20a2 2 0 0 1 2 2v9.5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.2a2 2 0 0 1 2-2h2.85l1.35-2ZM12 9a4.25 4.25 0 1 0 0 8.5A4.25 4.25 0 0 0 12 9Zm0 2a2.25 2.25 0 1 1 0 4.5 2.25 2.25 0 0 1 0-4.5Z"/></svg></button></div>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>SHADOW ARISE V10</title><style>
+*{box-sizing:border-box}html,body{margin:0;background:#070510;color:white;font-family:system-ui;overflow:hidden;height:100%}
+#app{height:100dvh;display:flex;flex-direction:column;align-items:center}
+#stage{position:relative;flex:1;min-height:0;aspect-ratio:4/5;max-width:100vw;width:auto;overflow:hidden;background:#080616}
+#camera,#overlay{position:absolute;width:100%;height:100%;inset:0;object-fit:cover}
+#camera.mirror{transform:scaleX(-1)}#overlay{pointer-events:none;display:none}#overlay.on{display:block}
+#status{position:absolute;z-index:2;top:6px;left:6px;background:#080316b0;padding:5px 9px;border-radius:7px;font-size:11px}
+#panel{flex:0 0 auto;width:100%;max-width:700px;background:#11091e;padding:7px 8px calc(9px + env(safe-area-inset-bottom))}
+#choices{display:flex;gap:7px;overflow-x:auto;padding:4px 2px 9px;scrollbar-width:thin}
+.choice{white-space:nowrap;border:1px solid #5d3a80;background:#251432;color:#ddd;border-radius:16px;padding:9px 12px;font-size:12px}
+.choice.sel{background:#7138a2;color:white;border-color:#d6a3ff}
+#actions{display:flex;align-items:center;justify-content:center;gap:14px}
+.action{border:1px solid #a774d6;background:#251432;color:#fff;border-radius:28px;padding:12px 18px;font-size:16px}
+#arise{background:#6b3497;font-weight:800;letter-spacing:.1em;min-width:118px}
+#shot{font-size:23px}#save{color:#d9b8ff;font-size:12px;display:none;text-align:center;margin-top:5px}
+</style></head><body><div id="app"><div id="stage"><video id="camera" autoplay muted playsinline></video><img id="overlay" src="army.png" alt=""><div id="status">V10 · Fotocamera in avvio</div></div><div id="panel"><div id="choices"><button class="choice" data-id="army">Shadow Army</button><button class="choice" data-id="blue">Blue Awakening</button><button class="choice" data-id="storm">Shadow Storm</button><button class="choice" data-id="monarch">Monarch</button><button class="choice" data-id="legion">Shadow Legion</button><button class="choice" data-id="throne">Dark Throne</button><button class="choice" data-id="night">Night Army</button><button class="choice" data-id="statue">Double Dungeon</button></div><div id="actions"><button class="action" id="flip" aria-label="Cambia fotocamera">↻</button><button class="action" id="arise">ARISE</button><button class="action" id="shot" aria-label="Scatta">📷</button></div><a id="save" download="shadow-arise.jpg">SALVA FOTO</a></div></div>
 <script>
-(()=>{'use strict';
-const v=document.querySelector('#camera'),overlay=document.querySelector('#overlay'),status=document.querySelector('#status'),save=document.querySelector('#save'),stage=document.querySelector('#stage');
-let facing='environment',stream=null,active=false;
-async function start(){try{if(stream)stream.getTracks().forEach(t=>t.stop());stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing}},audio:false});v.srcObject=stream;v.classList.toggle('mirror',facing==='user');await v.play();status.textContent='SHADOW ARISE V9 · Inquadra a figura intera'}catch(e){status.textContent='Fotocamera non disponibile: verifica permessi e HTTPS'}}
-document.querySelector('#flip').onclick=()=>{facing=facing==='environment'?'user':'environment';start()};
-document.querySelector('#arise').onclick=()=>{active=!active;overlay.classList.toggle('on',active);status.textContent=active?'SET ATTIVO · Scatta quando vuoi':'SHADOW ARISE V9 · Premi ARISE'};
-function drawCover(c,img,w,h,iw,ih,mirror){const scale=Math.max(w/iw,h/ih),dw=iw*scale,dh=ih*scale;c.save();if(mirror){c.translate(w,0);c.scale(-1,1)}c.drawImage(img,(w-dw)/2,(h-dh)/2,dw,dh);c.restore()}
-document.querySelector('#shot').onclick=()=>{if(!v.videoWidth){status.textContent='Attendi la fotocamera';return}if(!overlay.complete||!overlay.naturalWidth){status.textContent='Attendi il caricamento della cornice';return}
-const w=1080,h=1350,c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');
-drawCover(g,v,w,h,v.videoWidth,v.videoHeight,facing==='user');if(active)g.drawImage(overlay,0,0,w,h);
-c.toBlob(blob=>{if(!blob){status.textContent='Errore salvataggio';return}if(save.dataset.url)URL.revokeObjectURL(save.dataset.url);const url=URL.createObjectURL(blob);save.dataset.url=url;save.href=url;save.style.display='block';save.click();status.textContent='Foto pronta · usa SALVA FOTO se necessario'},'image/jpeg',.92)};
-start();
+(()=>{'use strict';const v=document.getElementById('camera'),img=document.getElementById('overlay'),status=document.getElementById('status'),save=document.getElementById('save');
+let stream=null,facing='environment',selected='army',active=false;
+async function camera(){try{if(stream)stream.getTracks().forEach(t=>t.stop());stream=await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:facing}}});v.srcObject=stream;v.classList.toggle('mirror',facing==='user');await v.play();status.textContent='V10 · Seleziona un layout'}catch(e){status.textContent='Fotocamera non disponibile: verifica permessi e HTTPS'}}
+document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{selected=b.dataset.id;document.querySelectorAll('.choice').forEach(x=>x.classList.toggle('sel',x===b));img.src=selected+'.png';img.classList.toggle('on',active);status.textContent='Layout: '+b.textContent});
+document.querySelector('.choice').classList.add('sel');
+document.getElementById('arise').onclick=()=>{active=!active;img.classList.toggle('on',active);status.textContent=active?'Set attivo · Scatta quando vuoi':'Set disattivato'};
+document.getElementById('flip').onclick=()=>{facing=facing==='environment'?'user':'environment';camera()};
+document.getElementById('shot').onclick=()=>{if(!v.videoWidth||!img.complete||!img.naturalWidth){status.textContent='Attendi il caricamento';return}const w=1080,h=1350,c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');let s=Math.max(w/v.videoWidth,h/v.videoHeight),dw=v.videoWidth*s,dh=v.videoHeight*s;g.save();if(facing==='user'){g.translate(w,0);g.scale(-1,1)}g.drawImage(v,(w-dw)/2,(h-dh)/2,dw,dh);g.restore();if(active)g.drawImage(img,0,0,w,h);c.toBlob(blob=>{if(!blob){status.textContent='Errore nel salvataggio';return}if(save.dataset.url)URL.revokeObjectURL(save.dataset.url);const url=URL.createObjectURL(blob);save.dataset.url=url;save.href=url;save.style.display='block';save.click();status.textContent='Foto pronta · Usa SALVA FOTO se necessario'},'image/jpeg',.92)};
+camera();
 })();
 </script></body></html>
