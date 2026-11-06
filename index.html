@@ -1,4 +1,4 @@
-<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0617"><title>SHADOW ARISE V8 — PHOTO SET</title><style>
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0617"><title>SHADOW ARISE V9 — PHOTO SET</title><style>
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090513;color:#fff;font-family:system-ui,Arial}
 #stage{position:absolute;inset:0;overflow:hidden;background:#070510}#camera,#overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}#overlay{pointer-events:none;object-position:center;opacity:0;transition:opacity .25s}#overlay.on{opacity:1}
 #camera.mirror{transform:scaleX(-1)}
@@ -11,7 +11,7 @@ button{border:1px solid #aa70e6;background:#21132f;color:#fff;border-radius:50%;
 #label{position:absolute;bottom:calc(86px + env(safe-area-inset-bottom));width:100%;text-align:center;font-size:11px;color:#ddd;text-shadow:0 2px 5px #000;z-index:4}
 </style></head><body>
 <div id="stage"><video id="camera" autoplay playsinline muted></video><img id="overlay" src="overlay.png" alt=""></div>
-<div id="status">SHADOW ARISE V8 · Consenti la fotocamera</div>
+<div id="status">SHADOW ARISE V9 · Consenti la fotocamera</div>
 <a id="save" download="solo-leveling-shadow-arise.jpg">SALVA FOTO ↓</a>
 <div id="label">Inquadra a figura intera · premi ARISE · scatta</div>
 <div id="controls"><button id="flip" aria-label="Cambia fotocamera">⟳</button><button id="arise">ARISE</button><button id="shot" aria-label="Scatta foto"><svg viewBox="0 0 24 24"><path d="M8.2 4.2h7.6l1.35 2H20a2 2 0 0 1 2 2v9.5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.2a2 2 0 0 1 2-2h2.85l1.35-2ZM12 9a4.25 4.25 0 1 0 0 8.5A4.25 4.25 0 0 0 12 9Zm0 2a2.25 2.25 0 1 1 0 4.5 2.25 2.25 0 0 1 0-4.5Z"/></svg></button></div>
@@ -19,9 +19,9 @@ button{border:1px solid #aa70e6;background:#21132f;color:#fff;border-radius:50%;
 (()=>{'use strict';
 const v=document.querySelector('#camera'),overlay=document.querySelector('#overlay'),status=document.querySelector('#status'),save=document.querySelector('#save'),stage=document.querySelector('#stage');
 let facing='environment',stream=null,active=false;
-async function start(){try{if(stream)stream.getTracks().forEach(t=>t.stop());stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing}},audio:false});v.srcObject=stream;v.classList.toggle('mirror',facing==='user');await v.play();status.textContent='SHADOW ARISE V8 · Inquadra a figura intera'}catch(e){status.textContent='Fotocamera non disponibile: verifica permessi e HTTPS'}}
+async function start(){try{if(stream)stream.getTracks().forEach(t=>t.stop());stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing}},audio:false});v.srcObject=stream;v.classList.toggle('mirror',facing==='user');await v.play();status.textContent='SHADOW ARISE V9 · Inquadra a figura intera'}catch(e){status.textContent='Fotocamera non disponibile: verifica permessi e HTTPS'}}
 document.querySelector('#flip').onclick=()=>{facing=facing==='environment'?'user':'environment';start()};
-document.querySelector('#arise').onclick=()=>{active=!active;overlay.classList.toggle('on',active);status.textContent=active?'SET ATTIVO · Scatta quando vuoi':'SHADOW ARISE V8 · Premi ARISE'};
+document.querySelector('#arise').onclick=()=>{active=!active;overlay.classList.toggle('on',active);status.textContent=active?'SET ATTIVO · Scatta quando vuoi':'SHADOW ARISE V9 · Premi ARISE'};
 function drawCover(c,img,w,h,iw,ih,mirror){const scale=Math.max(w/iw,h/ih),dw=iw*scale,dh=ih*scale;c.save();if(mirror){c.translate(w,0);c.scale(-1,1)}c.drawImage(img,(w-dw)/2,(h-dh)/2,dw,dh);c.restore()}
 document.querySelector('#shot').onclick=()=>{if(!v.videoWidth){status.textContent='Attendi la fotocamera';return}if(!overlay.complete||!overlay.naturalWidth){status.textContent='Attendi il caricamento della cornice';return}
 const w=1080,h=1350,c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');
